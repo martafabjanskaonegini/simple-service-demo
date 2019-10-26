@@ -40,7 +40,7 @@ jobs:
       - run: mvn clean package
 
       # build and push docker image to docker hub
-      - run: mvn clean compile jib:build -Dimage=martaonegini/simple-service-demo:$CIRCLE_BUILD_NUM
+      - run: mvn clean compile jib:build -Dimage=martaonegini/simple-service-demo:$CIRCLE_BUILD_NUM -Djib.to.auth.username=$DOCKER_USER -Djib.to.auth.password=$DOCKER_PASS
 
       # store raw contents of src code
       - store_artifacts:
